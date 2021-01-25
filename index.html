@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+
+function playRound(playerSelection, computerSelection) {
+      // your code here!
+            console.log("Playing round!")
+            console.log("Computer has chosen " + computerSelection)
+            console.log("Player has chosen " + playerSelection)
+            
+            if (playerSelection === computerSelection)
+            {
+                console.log("Draw!")
+                return 2
+            }
+            else if (playerSelection === "ROCK" && computerSelection === "SCISSORS")
+            {
+                console.log("Player wins this round!")
+                return 0
+            }
+            else if (playerSelection === "PAPER" && computerSelection === "ROCK")
+            {
+                console.log("Player w ins this round!")
+                return 0
+            }
+            else if (playerSelection === "SCISSORS" && computerSelection === "PAPER")
+            {
+                console.log("Player wins this round !")
+                return 0
+            }
+            else
+            {
+                console.log("Computer wins this round!")
+                return 1
+            }
+        }
+
+function computerPlay(){
+    var result = ["ROCK","PAPER","SCISSORS"]
+    return result[Math.floor(Math.random()*result.length)]
+  }
+
+function playerPlay()
+{
+   let pSelection = prompt("Choose rock, paper or scissors")
+   let correctInput = ["ROCK","PAPER","SCISSORS"]
+   //!(pSelection.toUpperCase() in )
+    while(!(correctInput.includes(pSelection.toUpperCase())))
+    {
+        pSelection = prompt("Options are limited to rock, paper, scissors. Please choose one to continue")
+        console.log(pSelection.toUpperCase())
+    }
+
+    return pSelection.toUpperCase()
+}
+
+function game(noOfRounds = 5)   {
+
+        let pWins = 0
+        let cWins = 0
+        for (let i = 0; i < noOfRounds; i++)
+        {
+            pSelection = playerPlay()
+            cSelection = computerPlay()
+            if(playRound(pSelection,cSelection))
+                cWins++
+            else
+                pWins++
+
+            console.log("Current computer wins: " + cWins)
+            console.log("Current player wins " + pWins)
+        }
+
+        if(pWins === cWins)
+        {
+            console.log("The computer and the player have both won "+ pWins + " games. The final result is a draw!")
+        }
+        else if (pWins > cWins){
+           console.log("The player wins the game! The result is " + pWins + " player wins to " + cWins + " computer wins. ")
+        }
+        else
+            console.log("The ccomputer wins the game! The result is " + cWins + " computer wins to " + pWins + " player wins. ")
+ 
+}
+
+game()
+
+</script>
+
+</html>
